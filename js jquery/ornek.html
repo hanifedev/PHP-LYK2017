@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .kisi{
+            width: 500px;
+            margin:0 auto;
+            border:1px solid silver;
+        }
+        .kisi-resim{
+            float:left;
+        }
+        .kisi-bilgi{
+            width:270px;
+            float:left;
+            margin-left:30px;
+        }
+        .kontroller{
+            width:500px;
+            margin:0 auto;
+        }
+        #sonraki{
+            float:right;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="kisi">
+        <div class="kisi-resim">
+            <img style="width: 200px" src="http://ugurarici.com/assets/img/ugur-arici.jpg"/>
+        </div>
+        <div class="kisi-bilgi">
+            <h3>Ugur Arıcı</h3>
+            <h4>Dijital Ürün Yöneticisi, Danışman</h4>
+            <p>Parçaların bütüne göre tasarlanması gerektiğine inanıyorum. Bütünün oluşturulması için süreç tasarımı ve danışmanlık yapıyor, dijital tarafı için fikirden üretime tam hizmet veriyorum.</p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="kontroller">
+        <button id="onceki">Önceki</button>
+        <button id="sonraki">Sonraki</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        kisiler=[
+            ["Uğur Arıcı", "http://ugurarici.com/assets/img/ugur-arici.jpg", "Dijital Ürün Yöneticisi, Danışman","Parçaların bütüne göre tasarlanması gerektiğine inanıyorum. Bütünün oluşturulması için süreç tasarımı ve danışmanlık yapıyor, dijital tarafı için fikirden üretime tam hizmet veriyorum.","https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/005/05f/14b/25a9fdc.jpg"],
+            ["Mark","https://upload.wikimedia.org/wikipedia/commons/f/fe/Mark_Zuckerberg_em_setembro_de_2014.jpg","Facebookta CEO","Zuckerberg, 2004 yılında Harvard Üniversitesi'nden girişimci arkadaşları Dustin Moskovitz, Eduardo Saverin ve Chris Hughes ile şu anda CEO'su olduğu sosyal paylaşım sitesi Facebook'u kurarak dünyanın şu anki en genç zengini olmasıyla tanınmaktadır. 2010 yılında ise Time dergisince, Yılın Adamı seçilmiştir[3]. 2016 yılı Nisan ayı itibarıyla kişisel serveti 48.2 milyar Amerikan dolarıdır.[2]","https://i.forbesimg.com/media/lists/people/mark-zuckerberg_416x416.jpg"],
+
+        ];
+        gosterilen = 0;
+        $("#sonraki").bind('click', function () {
+            if(gosterilen == 2){
+                gosterilen = 0;
+            }
+            else{
+                gosterilen++;
+            }
+
+            kisiDegistir(gosterilen);
+        });
+
+        $("#onceki").bind('click', function () {
+            if(gosterilen == 0){
+                gosterilen = 2;
+            }
+            else{
+                gosterilen--;
+            }
+            kisiDegistir(gosterilen);
+        });
+
+        $(".kisi img").hover(function () {
+            $(this).attr("src", kisiler[gosterilen][4]);
+        },function () {
+            $(this).attr("src", kisiler[gosterilen][1]);
+            }
+        );
+
+        function kisiDegistir(numara){
+            var resim = $(".kisi img");
+            var isim = $(".kisi h3");
+            var meslek = $(".kisi h4");
+            var aciklama = $(".kisi p");
+            var yeniKisi = kisiler[numara];
+            resim.attr("src", yeniKisi[1]);
+            isim.html(yeniKisi[0]);
+            meslek.html(yeniKisi[2]);
+            aciklama.html(yeniKisi[3]);
+        }
+
+    </script>
+</body>
+</html>

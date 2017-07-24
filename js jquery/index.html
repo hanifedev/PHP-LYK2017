@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Denemeler</title>
+</head>
+<body>
+    <img id="resim" width="200px" src="http://www.resimistanbul.com/wp-content/uploads/2016/03/RESIM-ISTANBUL-WEB-ANA-SLIDER2.jpg"/>
+    <input id="yeniResim" type="Text" placeholder="Hangi Resim Olsun?">
+    <div class="js" id="buton">Buton</div>
+    <div class="js" id="buton2">Buton</div>
+    <button id="degistir">degistir</button>
+    <button id="degistir2">degistir2</button>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        console.log(document.getElementById("buton"));
+        console.log(document.getElementsByClassName("js"));
+        console.log(document.getElementsByClassName("js")[1]);
+        console.log(document.getElementsByTagName("div"));
+        console.log(document.getElementsByTagName("div")[0].innerHTML="Buton Degisti");
+        buton = document.getElementById("buton2");
+        console.log(buton2);
+        $("#degistir").bind('click', function(){
+            buton2.innerText="BUTON DEGİSTİ";
+            var resim = $("#resim");
+            resim.attr("src", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Mark_Zuckerberg_em_setembro_de_2014.jpg");
+        });
+        $("#degistir2").bind('click',function () {
+            var yeniDeger = $("#yeniResim").val();
+            console.log(yeniDeger);
+            var resim = $("#resim");
+            resim.attr("src", yeniDeger);
+        });
+    </script>
+</body>
+</html>
