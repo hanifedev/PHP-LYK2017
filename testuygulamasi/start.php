@@ -14,7 +14,7 @@ require_once "inc/init.php";
 if(isset($_SESSION['started_at'])){
     $_SESSION['started_at'] = time(); //baslangıc zamanını aldık sessiona atadık.
     $_SESSION['total_questions_count'] = $connection->query("SELECT id FROM questions")->rowCount();
-    $_SESSION['correct_answer_count'] = 0;
+    $_SESSION['correct_answers_count'] = 0;
     $_SESSION['answered_questions'] = [0];
 }
 
